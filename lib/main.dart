@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/infrastruture/get_images.dart';
 
+import 'infrastruture/get_images.dart';
 import 'presentation/main_page/screen_main.dart';
 import 'presentation/movie_info_page/movie_info_page.dart';
 import 'presentation/see_more/screen_see_more.dart';
