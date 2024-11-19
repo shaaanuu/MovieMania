@@ -18,7 +18,7 @@ class MovieTypeText extends StatelessWidget {
           Text(
             txt,
             style: const TextStyle(
-              color: Colors.white,
+              color: Color(0xFFcdd6f4),
               fontSize: 17,
             ),
           ),
@@ -27,7 +27,7 @@ class MovieTypeText extends StatelessWidget {
             child: Text(
               'See more',
               style: TextStyle(
-                color: Colors.white.withOpacity(0.5),
+                color: const Color(0xFFcdd6f4).withOpacity(0.5),
                 fontSize: 13,
               ),
             ),

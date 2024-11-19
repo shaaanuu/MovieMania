@@ -4,9 +4,7 @@ import '../../infrastruture/get_images.dart';
 import '../home/widgets/movie_type_widget.dart';
 
 class MovieCategory extends StatelessWidget {
-  const MovieCategory({
-    Key? key,
-  }) : super(key: key);
+  const MovieCategory({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

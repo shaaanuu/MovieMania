@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'infrastruture/get_images.dart';
-import 'presentation/main_page/screen_main.dart';
+import 'presentation/hero/screen_hero.dart';
 import 'presentation/movie_info_page/movie_info_page.dart';
 import 'presentation/see_more/screen_see_more.dart';
 
@@ -16,32 +16,35 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {
-        '/info': (context) => const MovieInfoPage(),
-        '/seeMore': (context) => const ScreenSeeMore(),
-      },
       debugShowCheckedModeBanner: false,
-      home: ScreenMain(),
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFF070D2D),
-        appBarTheme: AppBarTheme(
+        scaffoldBackgroundColor: const Color(0xFF1e1e2e),
+        appBarTheme: const AppBarTheme(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          foregroundColor: Colors.white,
+          foregroundColor: Color(0xFFcdd6f4),
         ),
         navigationBarTheme: NavigationBarThemeData(
           backgroundColor: Colors.transparent,
           height: 70,
-          indicatorColor: Colors.grey.withOpacity(0.15),
+          indicatorColor: const Color(0xFF45475a),
           labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
           labelTextStyle: WidgetStateProperty.all(
             const TextStyle(
               fontSize: 14,
-              color: Color(0xFF546EE5),
+              color: Color(0xFFcdd6f4),
             ),
+          ),
+          iconTheme: const WidgetStatePropertyAll(
+            IconThemeData(color: Color(0xFFcdd6f4)),
           ),
         ),
       ),
+      routes: {
+        '/info': (context) => const MovieInfoPage(),
+        '/seeMore': (context) => const ScreenSeeMore(),
+      },
+      home: ScreenHero(),
     );
   }
 }

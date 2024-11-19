@@ -35,7 +35,7 @@ class MovieTypeWidget extends StatelessWidget {
               movieName,
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
-              style: const TextStyle(fontSize: 16, color: Colors.white),
+              style: const TextStyle(fontSize: 16, color: Color(0xFFcdd6f4)),
             ),
           ),
         ],
