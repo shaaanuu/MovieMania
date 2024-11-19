@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../infrastruture/get_images.dart';
-import '../home/widgets/movie_type_widget.dart';
+import '../widgets/movie_type_widget.dart';
 
 class ScreenSeeMore extends StatelessWidget {
   const ScreenSeeMore({super.key});

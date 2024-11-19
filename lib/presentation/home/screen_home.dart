@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../core/constants.dart';
-import '../common_widgets/movie_category.dart';
-import '../common_widgets/movie_type_txt.dart';
+import '../widgets/movie_category.dart';
+import '../widgets/movie_type_txt.dart';
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({Key? key}) : super(key: key);
