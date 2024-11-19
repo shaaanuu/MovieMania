@@ -37,25 +37,25 @@ class ScreenHero extends StatelessWidget {
     return ValueListenableBuilder(
       valueListenable: btmnavbarNotifier,
       builder: (context, int currentIndex, _) => Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            "MovieMania",
-            style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.w400),
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: IconButton.filled(
-                style: IconButton.styleFrom(
-                  backgroundColor: const Color(0xFF45475a),
-                  foregroundColor: const Color(0xFFcdd6f4),
-                ),
-                onPressed: () {},
-                icon: const Icon(Icons.search),
-              ),
-            ),
-          ],
-        ),
+        // appBar: AppBar(
+        //   title: const Text(
+        //     "MovieMania",
+        //     style: TextStyle(letterSpacing: 1, fontWeight: FontWeight.w400),
+        //   ),
+        //   actions: [
+        //     Padding(
+        //       padding: const EdgeInsets.only(right: 10),
+        //       child: IconButton.filled(
+        //         style: IconButton.styleFrom(
+        //           backgroundColor: const Color(0xFF45475a),
+        //           foregroundColor: const Color(0xFFcdd6f4),
+        //         ),
+        //         onPressed: () {},
+        //         icon: const Icon(Icons.search),
+        //       ),
+        //     ),
+        //   ],
+        // ),
         body: pages[currentIndex],
         bottomNavigationBar: NavigationBar(
           destinations: navigationDestinations,
