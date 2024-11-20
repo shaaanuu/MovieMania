@@ -60,7 +60,6 @@ class MovieInfoPage extends StatelessWidget {
                   height: 250,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    color: Colors.amber,
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: NetworkImage(moviesList[arg].image),
@@ -76,7 +75,7 @@ class MovieInfoPage extends StatelessWidget {
             child: Text(
               moviesList[arg].title,
               style: const TextStyle(
-                color: Colors.white,
+                color: Color(0xFFcdd6f4),
                 fontSize: 22,
                 fontWeight: FontWeight.w500,
               ),
@@ -87,7 +86,7 @@ class MovieInfoPage extends StatelessWidget {
             child: Text(
               moviesList[arg].overview,
               style: const TextStyle(
-                color: Colors.white70,
+                color: Color(0xFFbac2de),
                 fontSize: 14,
                 fontWeight: FontWeight.w300,
               ),
