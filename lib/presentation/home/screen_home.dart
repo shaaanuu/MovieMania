@@ -68,7 +68,11 @@ class ScreenHome extends StatelessWidget {
                         ),
                         icon: const Icon(Icons.play_arrow_rounded),
                         label: const Text("Play"),
-                        onPressed: () {},
+                        onPressed: () => Navigator.pushNamed(
+                          context,
+                          "/info",
+                          arguments: 0,
+                        ),
                       ),
                       const SizedBox(width: 10),
                       OutlinedButton(
@@ -76,7 +80,11 @@ class ScreenHome extends StatelessWidget {
                           foregroundColor: const Color(0xFFcdd6f4),
                         ),
                         child: const Text("Details"),
-                        onPressed: () {},
+                        onPressed: () => Navigator.pushNamed(
+                          context,
+                          "/info",
+                          arguments: 0,
+                        ),
                       ),
                     ],
                   ),
