@@ -1,104 +1,102 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import '../../core/constants.dart';
 import '../../infrastruture/get_images.dart';
-import '../widgets/movie_category.dart';
-import '../widgets/movie_type_txt.dart';
+
+class ImageTile extends StatelessWidget {
+  const ImageTile({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
+
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(15),
+      child: GestureDetector(
+        onTap: () => Navigator.pushNamed(
+          context,
+          '/info',
+          arguments: index,
+        ),
+        child: Image.network(
+          moviesList[index].image,
+          fit: BoxFit.cover,
+          loadingBuilder: (context, child, loadingProgress) {
+            if (loadingProgress == null) return child;
+            return Center(
+              child: CircularProgressIndicator(
+                value: loadingProgress.expectedTotalBytes != null
+                    ? loadingProgress.cumulativeBytesLoaded /
+                        (loadingProgress.expectedTotalBytes ?? 1)
+                    : null,
+              ),
+            );
+          },
+          errorBuilder: (context, error, stackTrace) => Container(
+            color: Colors.grey,
+            child: const Icon(
+              Icons.error,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          Container(
-            height: 450,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(moviesList[0].image),
-                fit: BoxFit.cover,
+      appBar: AppBar(
+        title: const Text(
+          "MovieMania",
+          style: TextStyle(
+            letterSpacing: 1,
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10),
+            child: IconButton.filled(
+              style: IconButton.styleFrom(
+                backgroundColor: const Color(0xFF45475a).withValues(alpha: 0.5),
+                foregroundColor: const Color(0xFFcdd6f4),
               ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                AppBar(
-                  title: const Text(
-                    "MovieMania",
-                    style: TextStyle(
-                      letterSpacing: 1,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  actions: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 10),
-                      child: IconButton.filled(
-                        style: IconButton.styleFrom(
-                          backgroundColor:
-                              const Color(0xFF45475a).withOpacity(0.5),
-                          foregroundColor: const Color(0xFFcdd6f4),
-                        ),
-                        onPressed: () {},
-                        icon: const Icon(Icons.search),
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  decoration: const BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0xFF1e1e2e),
-                        blurRadius: 50,
-                        spreadRadius: 20,
-                      ),
-                    ],
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextButton.icon(
-                        style: TextButton.styleFrom(
-                          foregroundColor: const Color(0xFFcdd6f4),
-                          backgroundColor:
-                              const Color(0xFF45475a).withOpacity(0.8),
-                        ),
-                        icon: const Icon(Icons.play_arrow_rounded),
-                        label: const Text("Play"),
-                        onPressed: () => Navigator.pushNamed(
-                          context,
-                          "/info",
-                          arguments: 0,
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: const Color(0xFFcdd6f4),
-                        ),
-                        child: const Text("Details"),
-                        onPressed: () => Navigator.pushNamed(
-                          context,
-                          "/info",
-                          arguments: 0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+              onPressed: () {},
+              icon: const Icon(Icons.search),
             ),
           ),
-          kHeight10,
-          const MovieTypeText(txt: 'Movies'),
-          const MovieCategory(),
-          kHeight10,
-          const MovieTypeText(txt: 'TV shows'),
-          const MovieCategory(),
         ],
+      ),
+      body: MasonryGridView.builder(
+        gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+        ),
+        mainAxisSpacing: 8,
+        crossAxisSpacing: 8,
+        itemBuilder: (context, index) {
+          final columnIndex = index % 2;
+          final offsetHeight = columnIndex * 40.0;
+
+          return Column(
+            children: [
+              if (index < 2) SizedBox(height: offsetHeight),
+              AspectRatio(
+                aspectRatio: 2 / 3,
+                child: ImageTile(index: index),
+              ),
+            ],
+          );
+        },
+        itemCount: moviesList.length,
       ),
     );
   }
