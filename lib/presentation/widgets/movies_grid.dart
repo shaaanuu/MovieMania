@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import '../../infrastruture/get_images.dart';
 import '../../infrastruture/movie.dart';
 
 class MovieGrid extends StatelessWidget {
@@ -29,7 +28,7 @@ class MovieGrid extends StatelessWidget {
               if (index < 2) SizedBox(height: index % 2 * 40.0),
               AspectRatio(
                 aspectRatio: 2 / 3,
-                child: ImageTile(index: index),
+                child: ImageTile(index: index, moviesList: moviesList),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 6, left: 4),
@@ -54,9 +53,11 @@ class ImageTile extends StatelessWidget {
   const ImageTile({
     Key? key,
     required this.index,
+    required this.moviesList,
   }) : super(key: key);
 
   final int index;
+  final List<Movie> moviesList;
 
   @override
   Widget build(BuildContext context) {

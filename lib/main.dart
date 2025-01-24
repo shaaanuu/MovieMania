@@ -1,17 +1,49 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-import 'infrastruture/get_images.dart';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+import 'core/api_key.dart';
+import 'core/constants.dart';
+import 'infrastruture/movie.dart';
 import 'presentation/hero/screen_hero.dart';
 import 'presentation/details/screen_details.dart';
 import 'presentation/see_more/screen_see_more.dart';
 
 void main() async {
-  await getMovies();
-  runApp(const MyApp());
+  final List<Movie> moviesList = [];
+
+  var response = await http.get(
+    Uri.https(
+      'api.themoviedb.org',
+      '3/trending/all/day',
+      {'api_key': apiKey},
+    ),
+  );
+
+  var jsonData = jsonDecode(response.body);
+
+  for (var item in jsonData['results']) {
+    final movie = Movie(
+      title: item['title']?.toString() ?? item['name'].toString(),
+      image: baseURLImage + item['poster_path'],
+      overview: item['overview'],
+    );
+    moviesList.add(movie);
+  }
+
+  runApp(
+    MyApp(moviesList: moviesList),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({
+    super.key,
+    required this.moviesList,
+  });
+
+  final List<Movie> moviesList;
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +76,10 @@ class MyApp extends StatelessWidget {
         ),
       ),
       routes: {
-        '/info': (context) => const ScreenDetails(),
-        '/seeMore': (context) => const ScreenSeeMore(),
+        '/info': (context) => ScreenDetails(moviesList: moviesList),
+        '/seeMore': (context) => ScreenSeeMore(moviesList: moviesList),
       },
-      home: ScreenHero(),
+      home: ScreenHero(moviesList: moviesList),
     );
   }
 }

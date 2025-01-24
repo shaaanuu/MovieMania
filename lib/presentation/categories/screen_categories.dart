@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 
 import '../../core/constants.dart';
+import '../../infrastruture/movie.dart';
 import '../widgets/movie_category.dart';
 import '../widgets/movie_type_txt.dart';
 
 class ScreenCategories extends StatelessWidget {
-  const ScreenCategories({Key? key}) : super(key: key);
+  const ScreenCategories({
+    Key? key,
+    required this.moviesList,
+  }) : super(key: key);
+
+  final List<Movie> moviesList;
 
   final List<String> movieCategoryType = const [
     'Top rated',
@@ -24,7 +30,7 @@ class ScreenCategories extends StatelessWidget {
         children: [
           kHeight10,
           MovieTypeText(txt: movieCategoryType[index]),
-          const MovieCategory(),
+          MovieCategory(moviesList: moviesList),
         ],
       ),
     );

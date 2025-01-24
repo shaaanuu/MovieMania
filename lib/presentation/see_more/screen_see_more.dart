@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../infrastruture/get_images.dart';
+import '../../infrastruture/movie.dart';
 import '../widgets/movies_grid.dart';
 
 class ScreenSeeMore extends StatelessWidget {
-  const ScreenSeeMore({super.key});
+  const ScreenSeeMore({super.key, required this.moviesList});
+
+  final List<Movie> moviesList;
 
   @override
   Widget build(BuildContext context) {

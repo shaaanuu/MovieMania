@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../../core/constants.dart';
-import '../../infrastruture/get_images.dart';
+import '../../infrastruture/movie.dart';
 
 class ScreenDetails extends StatelessWidget {
   const ScreenDetails({
     Key? key,
+    required this.moviesList,
   }) : super(key: key);
+
+  final List<Movie> moviesList;
 
   @override
   Widget build(BuildContext context) {

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../infrastruture/get_images.dart';
+import '../../infrastruture/movie.dart';
 import 'movie_type_widget.dart';
 
 class MovieCategory extends StatelessWidget {
-  const MovieCategory({Key? key}) : super(key: key);
+  const MovieCategory({Key? key, required this.moviesList}) : super(key: key);
+
+  final List<Movie> moviesList;
 
   @override
   Widget build(BuildContext context) {

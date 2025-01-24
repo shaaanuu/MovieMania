@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 
+import '../../infrastruture/movie.dart';
 import '../categories/screen_categories.dart';
 import '../home/screen_home.dart';
 
 class ScreenHero extends StatelessWidget {
-  final ValueNotifier<int> btmnavbarNotifier = ValueNotifier(0);
+  ScreenHero({Key? key, required this.moviesList}) : super(key: key);
 
-  ScreenHero({Key? key}) : super(key: key);
+  final ValueNotifier<int> btmnavbarNotifier = ValueNotifier(0);
+  final List<Movie> moviesList;
+
   @override
   Widget build(BuildContext context) {
     List<Widget> pages = [
-      const ScreenHome(),
-      const ScreenCategories(),
+      ScreenHome(moviesList: moviesList),
+      ScreenCategories(moviesList: moviesList),
     ];
 
     List<NavigationDestination> navigationDestinations = const [
