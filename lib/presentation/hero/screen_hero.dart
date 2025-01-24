@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../infrastruture/movie.dart';
+import '../../model/movie.dart';
 import '../categories/screen_categories.dart';
 import '../home/screen_home.dart';
 
@@ -8,7 +8,7 @@ class ScreenHero extends StatelessWidget {
   ScreenHero({Key? key, required this.moviesList}) : super(key: key);
 
   final ValueNotifier<int> btmnavbarNotifier = ValueNotifier(0);
-  final List<Movie> moviesList;
+  final List<MovieModel> moviesList;
 
   @override
   Widget build(BuildContext context) {

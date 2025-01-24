@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/constants.dart';
-import '../../infrastruture/movie.dart';
+import '../../model/movie.dart';
 import '../widgets/movie_category.dart';
 import '../widgets/movie_type_txt.dart';
 
@@ -11,7 +10,7 @@ class ScreenCategories extends StatelessWidget {
     required this.moviesList,
   }) : super(key: key);
 
-  final List<Movie> moviesList;
+  final List<MovieModel> moviesList;
 
   final List<String> movieCategoryType = const [
     'Top rated',
@@ -26,12 +25,14 @@ class ScreenCategories extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: movieCategoryType.length,
-      itemBuilder: (context, index) => Column(
-        children: [
-          kHeight10,
-          MovieTypeText(txt: movieCategoryType[index]),
-          MovieCategory(moviesList: moviesList),
-        ],
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        child: Column(
+          children: [
+            MovieTypeText(txt: movieCategoryType[index]),
+            MovieCategory(moviesList: moviesList),
+          ],
+        ),
       ),
     );
   }

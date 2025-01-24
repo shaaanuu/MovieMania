@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-import '../../infrastruture/movie.dart';
+import '../../model/movie.dart';
 
 class MovieGrid extends StatelessWidget {
-  final List<Movie> moviesList;
+  final List<MovieModel> moviesList;
 
   const MovieGrid({
     Key? key,
@@ -57,7 +57,7 @@ class ImageTile extends StatelessWidget {
   }) : super(key: key);
 
   final int index;
-  final List<Movie> moviesList;
+  final List<MovieModel> moviesList;
 
   @override
   Widget build(BuildContext context) {

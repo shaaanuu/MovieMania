@@ -3,15 +3,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-import 'core/api_key.dart';
-import 'core/constants.dart';
-import 'infrastruture/movie.dart';
+import 'api_key.dart';
+import 'model/movie.dart';
 import 'presentation/hero/screen_hero.dart';
 import 'presentation/details/screen_details.dart';
 import 'presentation/see_more/screen_see_more.dart';
 
 void main() async {
-  final List<Movie> moviesList = [];
+  final List<MovieModel> moviesList = [];
 
   var response = await http.get(
     Uri.https(
@@ -21,15 +20,12 @@ void main() async {
     ),
   );
 
-  var jsonData = jsonDecode(response.body);
-
-  for (var item in jsonData['results']) {
-    final movie = Movie(
+  for (var item in jsonDecode(response.body)['results']) {
+    moviesList.add(MovieModel(
       title: item['title']?.toString() ?? item['name'].toString(),
-      image: baseURLImage + item['poster_path'],
+      image: 'https://image.tmdb.org/t/p/w500/${item['poster_path']}',
       overview: item['overview'],
-    );
-    moviesList.add(movie);
+    ));
   }
 
   runApp(
@@ -43,7 +39,7 @@ class MyApp extends StatelessWidget {
     required this.moviesList,
   });
 
-  final List<Movie> moviesList;
+  final List<MovieModel> moviesList;
 
   @override
   Widget build(BuildContext context) {

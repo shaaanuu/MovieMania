@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-import '../../infrastruture/movie.dart';
+import '../../model/movie.dart';
 import 'movie_type_widget.dart';
 
 class MovieCategory extends StatelessWidget {
   const MovieCategory({Key? key, required this.moviesList}) : super(key: key);
 
-  final List<Movie> moviesList;
+  final List<MovieModel> moviesList;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 250,
       child: ListView.builder(
-        itemCount: moviesList.length,
+        itemCount: 5,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => GestureDetector(
           onTap: () => Navigator.pushNamed(
