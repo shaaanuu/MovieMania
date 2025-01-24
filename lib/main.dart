@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'infrastruture/get_images.dart';
 import 'presentation/hero/screen_hero.dart';
-import 'presentation/movie_info_page/movie_info_page.dart';
+import 'presentation/details/screen_details.dart';
 import 'presentation/see_more/screen_see_more.dart';
 
 void main() async {
@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       routes: {
-        '/info': (context) => const MovieInfoPage(),
+        '/info': (context) => const MovieDetails(),
         '/seeMore': (context) => const ScreenSeeMore(),
       },
       home: ScreenHero(),
