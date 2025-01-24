@@ -18,17 +18,14 @@ class ScreenCategories extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Categories')),
-      body: ListView.builder(
-        itemCount: movieCategoryType.length,
-        itemBuilder: (context, index) => Column(
-          children: [
-            kHeight10,
-            MovieTypeText(txt: movieCategoryType[index]),
-            const MovieCategory(),
-          ],
-        ),
+    return ListView.builder(
+      itemCount: movieCategoryType.length,
+      itemBuilder: (context, index) => Column(
+        children: [
+          kHeight10,
+          MovieTypeText(txt: movieCategoryType[index]),
+          const MovieCategory(),
+        ],
       ),
     );
   }
