@@ -39,6 +39,9 @@ class MyApp extends StatelessWidget {
             IconThemeData(color: Color(0xFFcdd6f4)),
           ),
         ),
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(color: Color(0xFFcdd6f4)),
+        ),
       ),
       routes: {
         '/info': (context) => const MovieInfoPage(),

@@ -83,17 +83,29 @@ class ScreenHome extends StatelessWidget {
         mainAxisSpacing: 8,
         crossAxisSpacing: 8,
         itemBuilder: (context, index) {
-          final columnIndex = index % 2;
-          final offsetHeight = columnIndex * 40.0;
-
-          return Column(
-            children: [
-              if (index < 2) SizedBox(height: offsetHeight),
-              AspectRatio(
-                aspectRatio: 2 / 3,
-                child: ImageTile(index: index),
-              ),
-            ],
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (index < 2) SizedBox(height: index % 2 * 40.0),
+                AspectRatio(
+                  aspectRatio: 2 / 3,
+                  child: ImageTile(index: index),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 6, left: 4),
+                  child: Text(
+                    moviesList[index].title,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      // color: Colors.white,
+                      fontSize: 16,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           );
         },
         itemCount: moviesList.length,
