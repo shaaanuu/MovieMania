@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../infrastruture/get_images.dart';
-import '../widgets/movie_type_widget.dart';
+import '../widgets/movies_grid.dart';
 
 class ScreenTrending extends StatelessWidget {
   const ScreenTrending({super.key});
@@ -28,24 +28,7 @@ class ScreenTrending extends StatelessWidget {
           ),
         ],
       ),
-      body: GridView.builder(
-        itemCount: moviesList.length,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisExtent: 280,
-        ),
-        itemBuilder: (context, index) => GestureDetector(
-          onTap: () => Navigator.pushNamed(
-            context,
-            '/info',
-            arguments: index,
-          ),
-          child: MovieTypeWidget(
-            movieName: moviesList[index].title,
-            poster: moviesList[index].image,
-          ),
-        ),
-      ),
+      body: MovieGrid(moviesList: moviesList),
     );
   }
 }

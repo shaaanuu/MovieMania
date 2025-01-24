@@ -1,52 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 import '../../infrastruture/get_images.dart';
-
-class ImageTile extends StatelessWidget {
-  const ImageTile({
-    Key? key,
-    required this.index,
-  }) : super(key: key);
-
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(15),
-      child: GestureDetector(
-        onTap: () => Navigator.pushNamed(
-          context,
-          '/info',
-          arguments: index,
-        ),
-        child: Image.network(
-          moviesList[index].image,
-          fit: BoxFit.cover,
-          loadingBuilder: (context, child, loadingProgress) {
-            if (loadingProgress == null) return child;
-            return Center(
-              child: CircularProgressIndicator(
-                value: loadingProgress.expectedTotalBytes != null
-                    ? loadingProgress.cumulativeBytesLoaded /
-                        (loadingProgress.expectedTotalBytes ?? 1)
-                    : null,
-              ),
-            );
-          },
-          errorBuilder: (context, error, stackTrace) => Container(
-            color: Colors.grey,
-            child: const Icon(
-              Icons.error,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
+import '../widgets/movies_grid.dart';
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({Key? key}) : super(key: key);
@@ -76,40 +31,7 @@ class ScreenHome extends StatelessWidget {
           ),
         ],
       ),
-      body: MasonryGridView.builder(
-        gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-        ),
-        mainAxisSpacing: 8,
-        crossAxisSpacing: 8,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (index < 2) SizedBox(height: index % 2 * 40.0),
-                AspectRatio(
-                  aspectRatio: 2 / 3,
-                  child: ImageTile(index: index),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 6, left: 4),
-                  child: Text(
-                    moviesList[index].title,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      // color: Colors.white,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-        itemCount: moviesList.length,
-      ),
+      body: MovieGrid(moviesList: moviesList),
     );
   }
 }
