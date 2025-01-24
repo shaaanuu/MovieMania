@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       routes: {
-        '/info': (context) => const MovieDetails(),
+        '/info': (context) => const ScreenDetails(),
         '/seeMore': (context) => const ScreenSeeMore(),
       },
       home: ScreenHero(),
