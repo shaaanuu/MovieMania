@@ -6,9 +6,9 @@ import '../widgets/movie_type_txt.dart';
 
 class ScreenCategories extends StatelessWidget {
   const ScreenCategories({
-    Key? key,
+    super.key,
     required this.moviesList,
-  }) : super(key: key);
+  });
 
   final List<MovieModel> moviesList;
 

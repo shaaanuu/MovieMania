@@ -4,9 +4,9 @@ import '../../model/movie.dart';
 
 class ScreenDetails extends StatelessWidget {
   const ScreenDetails({
-    Key? key,
+    super.key,
     required this.moviesList,
-  }) : super(key: key);
+  });
 
   final List<MovieModel> moviesList;
 

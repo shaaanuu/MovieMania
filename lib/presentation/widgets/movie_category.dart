@@ -4,7 +4,7 @@ import '../../model/movie.dart';
 import 'movie_type_widget.dart';
 
 class MovieCategory extends StatelessWidget {
-  const MovieCategory({Key? key, required this.moviesList}) : super(key: key);
+  const MovieCategory({super.key, required this.moviesList});
 
   final List<MovieModel> moviesList;
 

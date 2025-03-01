@@ -5,7 +5,7 @@ import '../categories/screen_categories.dart';
 import '../home/screen_home.dart';
 
 class ScreenHero extends StatelessWidget {
-  ScreenHero({Key? key, required this.moviesList}) : super(key: key);
+  ScreenHero({super.key, required this.moviesList});
 
   final ValueNotifier<int> btmnavbarNotifier = ValueNotifier(0);
   final List<MovieModel> moviesList;

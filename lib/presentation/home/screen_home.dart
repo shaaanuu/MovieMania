@@ -4,7 +4,7 @@ import '../../model/movie.dart';
 import '../widgets/movies_grid.dart';
 
 class ScreenHome extends StatelessWidget {
-  const ScreenHome({Key? key, required this.moviesList}) : super(key: key);
+  const ScreenHome({super.key, required this.moviesList});
 
   final List<MovieModel> moviesList;
 

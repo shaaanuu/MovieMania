@@ -7,9 +7,9 @@ class MovieGrid extends StatelessWidget {
   final List<MovieModel> moviesList;
 
   const MovieGrid({
-    Key? key,
+    super.key,
     required this.moviesList,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +51,10 @@ class MovieGrid extends StatelessWidget {
 
 class ImageTile extends StatelessWidget {
   const ImageTile({
-    Key? key,
+    super.key,
     required this.index,
     required this.moviesList,
-  }) : super(key: key);
+  });
 
   final int index;
   final List<MovieModel> moviesList;
