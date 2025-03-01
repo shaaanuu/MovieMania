@@ -32,10 +32,10 @@ Welcome to **MovieMania**, the app designed to help you discover your next favor
    Go to [TMDB](https://www.themoviedb.org/) and sign up to get your API key.
 
 4. **Set your API key**
-   Create a `api_key.dart` file in **_lib/core/_** and add your api key:
+   Create a `api_key.dart` file in **_lib/_** and add your api key:
 
    ```dart
-   const apiKey="your_api_key_here"
+   const apiKey="your_api_key_here";
    ```
 
 5. **Run the app**
