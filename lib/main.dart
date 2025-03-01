@@ -21,11 +21,21 @@ void main() async {
   );
 
   for (var item in jsonDecode(response.body)['results']) {
-    moviesList.add(MovieModel(
-      title: item['title']?.toString() ?? item['name'].toString(),
-      image: 'https://image.tmdb.org/t/p/w500/${item['poster_path']}',
-      overview: item['overview'],
-    ));
+    moviesList.add(
+      MovieModel(
+        id: item['id'],
+        title: item['title']?.toString() ?? item['name'].toString(),
+        image: 'https://image.tmdb.org/t/p/w500/${item['poster_path']}',
+        overview: item['overview'],
+        backdropPath: item['backdrop_path'],
+        genreIds: List<int>.from(item['genre_ids']),
+        mediaType: item['media_type'],
+        originalLanguage: item['original_language'],
+        voteAverage: (item['vote_average'] as num).toDouble(),
+        voteCount: item['vote_count'],
+        releaseDate: item['release_date'] ?? item['first_air_date'],
+      ),
+    );
   }
 
   runApp(
