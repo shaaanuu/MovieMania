@@ -12,9 +12,14 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          channel: 'stable'
+          channel: "stable"
           architecture: x64
       - run: flutter pub get
+
+      - name: Extract Version from pubspec.yaml
+        id: extract_version
+        run: |
+          echo "VERSION=$(grep '^version: ' pubspec.yaml | sed 's/version: //')" >> $GITHUB_ENV
 
       - name: Create api_key.dart
         run: echo "const String apiKey = '${{ secrets.API_KEY }}';" > lib/api_key.dart
@@ -26,6 +31,6 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: build/app/outputs/flutter-apk/app-release.apk
-          tag: v1.0
+          tag: ${{ env.VERSION }}
           overwrite: true
-          body: "This is first release"
+          body: "Movies through a dithered lens"
